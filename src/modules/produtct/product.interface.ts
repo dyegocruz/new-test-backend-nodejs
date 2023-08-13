@@ -1,5 +1,4 @@
 import { HydratedDocument, Model, Types } from "mongoose";
-import { ICategoryDoc } from "../category/category.interface";
 
 export interface IProduct {
   title: string;
