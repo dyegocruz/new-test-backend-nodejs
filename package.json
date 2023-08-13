@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/dyegocruz/new-test-backend-nodejs#readme",
   "dependencies": {
+    "@aws-sdk/client-sqs": "^3.388.0",
+    "aws-sdk": "^2.1435.0",
     "compression": "^1.7.4",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
