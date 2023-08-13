@@ -1,7 +1,5 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { IProductDoc, IProductModel } from "./product.interface";
-import Category from "../category/category.model";
-const { Schema } = mongoose;
 
 const productSchema = new Schema<IProductDoc, IProductModel>(
   {
