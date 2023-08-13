@@ -1,16 +1,15 @@
+import { Request, Response } from "express";
+import { Types } from "mongoose";
 import httpStatus from "http-status";
 import * as productService from "./product.service";
-import { Request, Response } from "express";
-import mongoose from "mongoose";
-
-// export const getCategories = async (req: Request, res: Response) => {
-//   const categories = await categoryService.getAll();
-//   res.status(httpStatus.OK).send(categories);
-// };
+import queueService from "../queue/queue.service";
 
 export const createProduct = async (req: Request, res: Response) => {
   try {
     const product = await productService.createProduct(req.body);
+
+    await queueService.sendMessage({ ownerId: product.ownerId });
+
     res.status(httpStatus.CREATED).send(product);
   } catch (err: any) {
     res.status(httpStatus.BAD_REQUEST).send({ message: err.message });
@@ -20,9 +19,12 @@ export const createProduct = async (req: Request, res: Response) => {
 export const updateProduct = async (req: Request, res: Response) => {
   try {
     const product = await productService.updateProductById(
-      new mongoose.Types.ObjectId(req.params.id),
+      new Types.ObjectId(req.params.id),
       req.body,
     );
+
+    await queueService.sendMessage({ ownerId: product.ownerId });
+
     res.status(httpStatus.OK).send(product);
   } catch (err: any) {
     res.status(httpStatus.BAD_REQUEST).send({ message: err.message });
@@ -31,10 +33,13 @@ export const updateProduct = async (req: Request, res: Response) => {
 
 export const deleteProduct = async (req: Request, res: Response) => {
   try {
-    const category = await productService.deleteProductById(
-      new mongoose.Types.ObjectId(req.params.id),
+    const product = await productService.deleteProductById(
+      new Types.ObjectId(req.params.id),
     );
-    res.status(httpStatus.NO_CONTENT).send(category);
+
+    await queueService.sendMessage({ ownerId: product.ownerId });
+
+    res.status(httpStatus.NO_CONTENT).send(product);
   } catch (err: any) {
     res.status(httpStatus.NOT_FOUND).send({ message: err.message });
   }
