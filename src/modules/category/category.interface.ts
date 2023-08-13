@@ -1,12 +1,12 @@
 import { Model, Document } from "mongoose";
 
-export interface ICategory {
+export interface ICategory extends Document {
   title: string;
   description: string;
   ownerId: string;
 }
 
-export interface ICategoryDoc extends ICategory, Document {}
+export type ICategoryDoc = ICategory;
 
 export type ICategoryModel = Model<ICategoryDoc>;
 

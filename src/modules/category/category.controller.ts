@@ -1,7 +1,7 @@
+import { Types } from "mongoose";
 import httpStatus from "http-status";
 import * as categoryService from "./category.service";
 import { Request, Response } from "express";
-import mongoose from "mongoose";
 
 export const getCategories = async (req: Request, res: Response) => {
   const categories = await categoryService.getAll();
@@ -20,7 +20,7 @@ export const createCategory = async (req: Request, res: Response) => {
 export const updateCategory = async (req: Request, res: Response) => {
   try {
     const category = await categoryService.updateCategoryById(
-      new mongoose.Types.ObjectId(req.params.id),
+      new Types.ObjectId(req.params.id),
       req.body,
     );
     res.status(httpStatus.OK).send(category);
@@ -32,7 +32,7 @@ export const updateCategory = async (req: Request, res: Response) => {
 export const deleteCategory = async (req: Request, res: Response) => {
   try {
     const category = await categoryService.deleteCategoryById(
-      new mongoose.Types.ObjectId(req.params.id),
+      new Types.ObjectId(req.params.id),
     );
     res.status(httpStatus.NO_CONTENT).send(category);
   } catch (err: any) {

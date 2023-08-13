@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import { Types } from "mongoose";
 import {
   ICategoryDoc,
   NewCreateCategory,
@@ -11,9 +11,16 @@ export const getAll = async (): Promise<ICategoryDoc[]> => {
 };
 
 export const getOne = async (
-  idCategory: mongoose.Types.ObjectId,
+  idCategory: Types.ObjectId,
+  ownerId?: string,
 ): Promise<ICategoryDoc> => {
-  const category = await Category.findOne(idCategory);
+  const category = await Category.findOne({
+    _id: idCategory,
+    ownerId,
+  });
+
+  if (!category && ownerId)
+    throw new Error(`Category not found for the owner ${ownerId}`);
 
   if (!category) throw new Error("Category not found");
 
@@ -27,7 +34,7 @@ export const createCategory = async (
 };
 
 export const updateCategoryById = async (
-  idCategory: mongoose.Types.ObjectId,
+  idCategory: Types.ObjectId,
   categoryBody: UpdateCategoryBody,
 ): Promise<ICategoryDoc> => {
   const updatedCategory = await Category.findByIdAndUpdate(
@@ -44,7 +51,7 @@ export const updateCategoryById = async (
 };
 
 export const deleteCategoryById = async (
-  idCategory: mongoose.Types.ObjectId,
+  idCategory: Types.ObjectId,
 ): Promise<ICategoryDoc> => {
   const deletedCategory = await Category.findOneAndDelete({ _id: idCategory });
 

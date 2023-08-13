@@ -1,8 +1,10 @@
 import { Router } from "express";
-import categoriesRoutes from "./modules/category/category.routes";
+import categoryRoutes from "./modules/category/category.routes";
+import productRoutes from "./modules/produtct/product.routes";
 
 const appRoutes = Router();
 
-appRoutes.use("/categories", categoriesRoutes);
+appRoutes.use("/category", categoryRoutes);
+appRoutes.use("/product", productRoutes);
 
 export default appRoutes;
