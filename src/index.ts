@@ -22,4 +22,4 @@ const start = async () => {
   consumer.start();
 };
 
-start();
+export default start();
