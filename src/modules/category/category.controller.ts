@@ -13,7 +13,7 @@ export const createCategory = async (req: Request, res: Response) => {
   try {
     const category = await categoryService.createCategory(req.body);
 
-    await queueService.sendMessage({ ownerId: category.ownerId });
+    await queueService.sendMessage({ ownerId: category.ownerId.toString() });
 
     res.status(httpStatus.CREATED).send(category);
   } catch (err: any) {
@@ -28,7 +28,7 @@ export const updateCategory = async (req: Request, res: Response) => {
       req.body,
     );
 
-    await queueService.sendMessage({ ownerId: category.ownerId });
+    await queueService.sendMessage({ ownerId: category.ownerId.toString() });
 
     res.status(httpStatus.OK).send(category);
   } catch (err: any) {
@@ -42,7 +42,7 @@ export const deleteCategory = async (req: Request, res: Response) => {
       new Types.ObjectId(req.params.id),
     );
 
-    await queueService.sendMessage({ ownerId: category.ownerId });
+    await queueService.sendMessage({ ownerId: category.ownerId.toString() });
 
     res.status(httpStatus.NO_CONTENT).send(category);
   } catch (err: any) {

@@ -1,6 +1,5 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { ICategoryDoc, ICategoryModel } from "./category.interface";
-const { Schema } = mongoose;
 
 const categorySchema = new Schema<ICategoryDoc, ICategoryModel>(
   {
@@ -15,7 +14,7 @@ const categorySchema = new Schema<ICategoryDoc, ICategoryModel>(
       trim: true,
     },
     ownerId: {
-      type: String,
+      type: Schema.Types.ObjectId,
       required: true,
     },
   },

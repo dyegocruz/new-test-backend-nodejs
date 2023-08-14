@@ -1,9 +1,9 @@
-import { Model, Document } from "mongoose";
+import { Model, Document, Types } from "mongoose";
 
 export interface ICategory extends Document {
   title: string;
   description: string;
-  ownerId: string;
+  ownerId: Types.ObjectId;
 }
 
 export type ICategoryDoc = ICategory;
