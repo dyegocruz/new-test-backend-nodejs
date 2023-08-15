@@ -66,15 +66,6 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"ownerId\": \"dyegocruz\",\n    \"title\": \"teste\",\n    \"description\": \"poxa vida que legalasdasdasd\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "localhost:3000/categories/64d7c5d20e03abc8491b5ae7",
 					"host": [
