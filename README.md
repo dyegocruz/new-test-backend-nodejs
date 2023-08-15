@@ -6,7 +6,7 @@ There is a Postman json file on the root directory for import the requests using
 
 ## How to start?
 
-1. Make sure that exists a mondodb server instance running. If already, jump for the next stop. In another case run `docker run --name mongo -p 27017:27017 -d mongo`
+1. Make sure that exists a mondodb server instance running. If already, just jump for the next step. In another case run `docker run --name mongo -p 27017:27017 -d mongo`
 1. `git clone git@github.com:dyegocruz/new-test-backend-nodejs.git`
 1. `git checkout dyego-cruz`
 1. `npm install`
