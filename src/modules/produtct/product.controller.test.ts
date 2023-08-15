@@ -1,11 +1,12 @@
 import supertest from "supertest";
-import AWSMock from "aws-sdk-mock";
 import AWS from "aws-sdk";
 import { Types } from "mongoose";
 import { faker } from "@faker-js/faker";
 import { connectDB, disconnectDB } from "../../config/db.config";
 import app from "../../app";
 import httpStatus from "http-status";
+
+const sqs = new AWS.SQS();
 
 describe("Product Controller", () => {
   const ownerId = new Types.ObjectId().toString();
@@ -24,11 +25,10 @@ describe("Product Controller", () => {
 
   beforeAll(async () => {
     await connectDB();
+  });
 
-    AWSMock.setSDKInstance(AWS);
-    AWSMock.mock("SQS", "sendMessage", () => {
-      return;
-    });
+  beforeEach(async () => {
+    sqs.sendMessage = jest.fn();
   });
 
   afterAll(async () => {

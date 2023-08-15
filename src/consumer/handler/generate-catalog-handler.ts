@@ -5,11 +5,13 @@ import * as storageService from "../../modules/storage/storage.service";
 const generateCatalogJsonHandler = async (messages: Message[]) => {
   for (const message of messages) {
     if (message.Body) {
+      console.log("generateCatalogJsonHandler - message.Body", message.Body);
       const messageBody = JSON.parse(message.Body);
 
       const catalog = await catalogService.generateCatalog(messageBody.ownerId);
 
-      await storageService.uploadFile(`${messageBody.ownerId}.json`, catalog);
+      if (catalog.length > 0)
+        await storageService.uploadFile(`${messageBody.ownerId}.json`, catalog);
     }
   }
 };

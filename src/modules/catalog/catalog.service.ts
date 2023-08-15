@@ -1,3 +1,4 @@
+import { Types } from "mongoose";
 import Category from "../category/category.model";
 import { Catalog } from "./catalog.interface";
 
@@ -5,7 +6,7 @@ export const generateCatalog = async (ownerId: string): Promise<Catalog[]> => {
   return await Category.aggregate([
     {
       $match: {
-        ownerId,
+        ownerId: new Types.ObjectId(ownerId),
       },
     },
     {
