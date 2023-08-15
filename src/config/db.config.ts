@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import envConfig from "./env.config";
+import logger from "../logger";
 
 mongoose.Promise = global.Promise;
 
@@ -10,17 +11,17 @@ export const connectDB = async () => {
     await mongoose.connect(mongoUri, {
       autoCreate: true,
     });
-    console.log("MongoDb Connected");
+    logger.info("MongoDb Connected");
   } catch (err: any) {
-    console.log(err.message);
+    logger.error(err.message);
   }
 };
 
 export const disconnectDB = async () => {
   try {
     await mongoose.connection.close();
-  } catch (err) {
-    console.log(err);
+  } catch (err: any) {
+    logger.error(err.message);
     process.exit(1);
   }
 };
