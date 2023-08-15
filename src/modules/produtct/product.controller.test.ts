@@ -1,10 +1,10 @@
 import supertest from "supertest";
+import httpStatus from "http-status";
 import AWS from "aws-sdk";
 import { Types } from "mongoose";
 import { faker } from "@faker-js/faker";
 import { connectDB, disconnectDB } from "../../config/db.config";
 import app from "../../app";
-import httpStatus from "http-status";
 
 const sqs = new AWS.SQS();
 
