@@ -10,8 +10,7 @@ const generateCatalogJsonHandler = async (messages: Message[]) => {
 
       const catalog = await catalogService.generateCatalog(messageBody.ownerId);
 
-      if (catalog.length > 0)
-        await storageService.uploadFile(`${messageBody.ownerId}.json`, catalog);
+      await storageService.uploadFile(`${messageBody.ownerId}.json`, catalog);
     }
   }
   logger.info(`${messages.length} processed messages`);
