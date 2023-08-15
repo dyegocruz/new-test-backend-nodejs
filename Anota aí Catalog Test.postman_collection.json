@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "007b4d62-a728-423c-a393-0c34b14a1505",
+		"name": "Anota aí Catalog Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1441974"
+	},
+	"item": [
+		{
+			"name": "Category POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ownerId\": \"64d912c80a5474c97e9ce855\",\n    \"title\": \"Categoria título teste\",\n    \"description\": \"Descrição da categoria de teste\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/category",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Category PUT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ownerId\": \"64d912c80a5474c97e9ce855\",\n    \"title\": \"Categoria título teste atualizado\",\n    \"description\": \"Descrição atualizada\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/category/64da5fe1a35308a0b420257c",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"category",
+						"64da5fe1a35308a0b420257c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Category DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ownerId\": \"dyegocruz\",\n    \"title\": \"teste\",\n    \"description\": \"poxa vida que legalasdasdasd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/categories/64d7c5d20e03abc8491b5ae7",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"categories",
+						"64d7c5d20e03abc8491b5ae7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Novo produto de teste\",\n    \"description\": \"Descrição do novo produto de teste\",\n    \"price\": 67.9,\n    \"category\": \"64da5fe1a35308a0b420257c\",\n    \"ownerId\": \"64d912c80a5474c97e9ce855\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/product",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product PUT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Novo produto atualizado\",\n    \"description\": \"Descrição do produto atualizado\",\n    \"price\": 78,\n    \"ownerId\": \"64d912c80a5474c97e9ce855\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/product/64db88474a1c1a101d93d308",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"64db88474a1c1a101d93d308"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/product/64db8a5d4a1c1a101d93d30e",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"64db8a5d4a1c1a101d93d30e"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
